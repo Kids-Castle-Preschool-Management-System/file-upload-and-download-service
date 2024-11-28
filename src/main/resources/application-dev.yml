@@ -1,1 +1,26 @@
-spring.application.name=file upload and download service
+server:
+  port: 5000
+
+spring:
+  application:
+    name: file upload and download service
+
+  datasource:
+    url: jdbc:postgresql://localhost:5433/isusu
+    username: postgres
+    password: P@55vv0rd
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    open-in-view: false # Prevents lazy loading issues in the view layer
+
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
