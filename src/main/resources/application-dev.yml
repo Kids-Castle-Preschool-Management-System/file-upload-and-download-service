@@ -1,26 +1,39 @@
 server:
-  port: 5000
+  port: 5000 # The port on which the application will run
 
 spring:
   application:
-    name: file upload and download service
+    name: file-upload-and-download-service # Application name for easier identification in logs and monitoring
 
   datasource:
-    url: jdbc:postgresql://localhost:5433/isusu
-    username: postgres
-    password: P@55vv0rd
-    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5433/isusu # Database connection URL
+    username: postgres # Database username
+    password: P@55vv0rd # Database password (Consider using environment variables for better security)
+    driver-class-name: org.postgresql.Driver # PostgreSQL driver class
 
   jpa:
-    show-sql: true
+    show-sql: true # Show SQL statements in the logs for debugging purposes
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: create-drop # Automatically drop and recreate the database schema at startup (change to 'update' for production)
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
-    open-in-view: false # Prevents lazy loading issues in the view layer
+        dialect: org.hibernate.dialect.PostgreSQLDialect # PostgreSQL dialect for Hibernate
+    open-in-view: false # Prevent lazy loading issues in the view layer; recommended to keep it false for performance
 
   servlet:
     multipart:
-      max-file-size: 100MB
-      max-request-size: 100MB
+      max-file-size: 100MB # Maximum allowed file size for uploads
+      max-request-size: 100MB # Maximum allowed request size for multipart requests
+
+springdoc:
+  api-docs:
+    enabled: true # Enable API documentation generation
+    path: /v3/api-docs # The path where the OpenAPI documentation will be served
+  swagger-ui:
+    enabled: true # Enable Swagger UI for viewing API documentation
+    path: /swagger-ui.html # URL path for accessing Swagger UI
+    display-request-duration: true # Show request durations in Swagger UI
+    operations-sorter: method # Sort operations in Swagger UI by HTTP method
+  group-configs:
+    - group: public # Define a group name for public APIs
+      paths-to-match: /api/** # Match public API endpoints under /api
