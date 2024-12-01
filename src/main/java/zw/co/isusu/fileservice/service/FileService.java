@@ -1,6 +1,5 @@
 package zw.co.isusu.fileservice.service;
 
-import org.springframework.core.io.Resource;
 import org.springframework.data.domain.Page;
 import org.springframework.web.multipart.MultipartFile;
 import zw.co.isusu.fileservice.service.exception.FileNotFoundException;
