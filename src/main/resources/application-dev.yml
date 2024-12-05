@@ -8,7 +8,7 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:5433/isusu # Database connection URL
     username: postgres # Database username
-    password: P@55vv0rd # Database password (Consider using environment variables for better security)
+    password: P@55vv0rd # Database password (Consider using environment variables for production code for better security)
     driver-class-name: org.postgresql.Driver # PostgreSQL driver class
 
   jpa:
