@@ -1,5 +1,6 @@
 package zw.co.isusu.fileservice.service;
 
+import org.apache.tomcat.util.http.fileupload.FileUploadException;
 import org.springframework.data.domain.Page;
 import org.springframework.web.multipart.MultipartFile;
 import zw.co.isusu.fileservice.service.exception.FileNotFoundException;
@@ -17,7 +18,7 @@ import java.util.UUID;
  * Service interface for file operations.
  */
 public interface FileService {
-    FileUploadResponse uploadFile(FileUploadRequest request);
+    FileUploadResponse uploadFile(FileUploadRequest request) throws FileUploadException;
 
     FileDownloadResponse downloadFile(UUID id) throws FileNotFoundException;
 
